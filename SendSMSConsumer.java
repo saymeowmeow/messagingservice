@@ -32,13 +32,13 @@ import java.util.concurrent.TimeoutException;
 
 public class SendSMSConsumer {
     private static final String QUEUE_NAME = "sms_queue";
-    private static final String DB_URL = "jdbc:edb://10.10.10.54:5447/odisha_uat";
-    private static final String DB_USER = "odisha_uat";
-    private static final String DB_PASSWORD = "Od15hauat";
+    private static final String DB_URL = "jdbc:edb://";
+    private static final String DB_USER = "";
+    private static final String DB_PASSWORD = "";
     
  // Add your FCM server key here
     private static final String FCM_API_URL = "https://fcm.googleapis.com/fcm/send";
-    private static final String FCM_AUTH_KEY = "AAAAu3aY5sk:APA91bHoiUlAeKDqc4jN5QlWP-mlFjYKLpVbk4bvKvp20NbxWimquU2AmydAbu4o8H1HiV5_TQXQuSq6Vta_De9WRXh3QlzhflT_8Llyr07eh2M_DoEJ0G09gAjCIbSWhy_BsXpUZo5P";
+    private static final String FCM_AUTH_KEY = "";
     
     private static final int MAX_RETRIES = 3;
     private static final long RETRY_INTERVAL_MS = 6000; // 6 second (adjust as needed)
@@ -140,10 +140,10 @@ public class SendSMSConsumer {
 
     public static void main(String[] args) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("10.226.30.117");
+        factory.setHost("");
         factory.setPort(5672);
-        factory.setUsername("newadmin");
-        factory.setPassword("Cdac@123");
+        factory.setUsername("");
+        factory.setPassword("");
 
         com.rabbitmq.client.Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
@@ -226,7 +226,7 @@ public class SendSMSConsumer {
                 }
                 System.out.println("Request Payload:\n" + payload);
                 Request request = new Request.Builder()
-                        .url("https://govtsms.odisha.gov.in/api/api.php?")
+                        .url("")
                         .post(requestBody)
                         .build();
 
@@ -338,7 +338,7 @@ public class SendSMSConsumer {
                 try {
                     conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                  // Prepare the SQL query
-                    String query = "SELECT hrgstr_token_id FROM mobile_patient_registration_dtl WHERE hrgnum_puk = ? ORDER BY gdt_entry_date DESC LIMIT 1";
+                    String query = "SELECT column FROM table WHERE column = ? ORDER BY column DESC LIMIT 1";
                     stmt = conn.prepareStatement(query);
                     stmt.setString(1, crNo);
                  // Execute the query and get the result set
@@ -376,7 +376,7 @@ public class SendSMSConsumer {
                     conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
                     // Prepare the SQL update statement
-                    String updateSql = "UPDATE inv_sms_dtl SET sms_status_response = ?, send_status = ? WHERE mobileno = ?";
+                    String updateSql = "UPDATE table_name SET column_name= ?, column2_name = ? WHERE mobileno = ?";
                     stmt = conn.prepareStatement(updateSql);
 
                     // Set the status and phone number as parameters in the update statement
