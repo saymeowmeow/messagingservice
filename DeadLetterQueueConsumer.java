@@ -8,10 +8,10 @@ public class DeadLetterQueueConsumer {
 
     public static void main(String[] args) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("10.226.30.117");
+        factory.setHost("xx.xx.xx.xx");
         factory.setPort(5672);
-        factory.setUsername("newadmin");
-        factory.setPassword("Cdac@123");
+        factory.setUsername("username");
+        factory.setPassword("password");
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
